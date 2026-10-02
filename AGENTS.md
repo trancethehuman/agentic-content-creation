@@ -15,7 +15,7 @@ A workspace for creating content **agentically**: infographics, short videos, In
 5. **No kicker or subtitle above the headline.** Don't stack a subheader, headline, subtext, big text, and small text. Keep the type **simple, clear, and clean**: one headline, then the main content, plus at most one short supporting sentence if it is truly needed. Use about two text sizes per piece. (Labels inside a diagram are fine when they name things.)
 6. **The main content is what matters:** a beautiful Fictive Kin-style illustration and nicely designed diagrams or flowcharts. Use the space for the illustration and for air.
 7. Separate sections with **space or a surface colour** (a card or panel), never with a line.
-8. **Monochrome, on white.** Use a white background and greyscale only, with no accent colour. Show emphasis through ink vs. light grey and filled vs. outlined.
+8. **Monochrome, on white.** Use a white background and greyscale only, with no accent colour. Show emphasis through ink vs. light grey and filled vs. outlined. A **dark-mode variant** is made on request by generating it, not redesigning it: `skills/lib/make-dark.mjs` (see `house-style.md` §2b).
 9. **No italic or coloured emphasis** in headlines (e.g. a green italic phrase, or a greyed-out line). A headline is one colour and one weight.
 10. **Icons come from Lucide** (`node_modules/lucide`), at stroke 1.5.
 11. **Generous negative space.** When in doubt, remove something.

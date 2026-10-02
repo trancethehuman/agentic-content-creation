@@ -43,6 +43,8 @@ node skills/infographic/render.mjs output/<project>/infographics/src --out outpu
 ```
 The renderer runs a **fit check** and prints `✓`, or `⚠ OVERFLOW` / `⚠ CLIPPED` / `⚠ MARGIN` with the offending elements, then exits with an error. A piece is not done until it prints `✓` **and** you've looked at the bottom edge yourself (see the Quality gate in `AGENTS.md`).
 
+**Dark mode:** `node skills/lib/make-dark.mjs output/<project>/infographics/src`, then render `src-dark/` into `infographics/dark/` (see `house-style.md` §2b).
+
 ## 5. Review loop (required)
 Open every PNG and critique it:
 - Overflow, or anything cramped against the edges

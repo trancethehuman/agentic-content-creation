@@ -53,6 +53,29 @@ Think of a page from a Palantir white paper crossed with a Swiss museum catalogu
 
 Ratio guide: about 80% white, 15% light greys, 5% ink.
 
+### 2b. Dark mode (a variant, made on request)
+White is the default. When dark versions are wanted, **don't redesign**. Generate them, because the style is strictly greyscale and every token has a dark partner (Palantir's dark HUD sections are the reference):
+
+| Light token | → | Dark | Role in dark mode |
+|---|---|---|---|
+| `--paper #FFFFFF` | → | `#0D0D0D` | Stage |
+| `--snow #F6F6F6` | → | `#171717` | Cards, panels |
+| `--fog #EDEDED` | → | `#222222` | Stronger surface, bar tracks |
+| `--mist #D6D6D6` | → | `#3A3A3A` | Outlines, unchosen options |
+| `--ash #A6A6A6` | → | `#6E6E6E` | Labels |
+| `--stone #6B6B6B` | → | `#A3A3A3` | Secondary text |
+| `--graphite #333333` | → | `#D9D9D9` | Strong secondary |
+| `--ink #0D0D0D` | → | `#F2F2F2` | Headline and **the answer**. A black chip becomes a light chip, so it stays the brightest thing on the page |
+
+Greys in between are interpolated. Gradient spheres keep their lighting (highlight lighter than edge) and only their overall tone moves, so the "answer" sphere becomes luminous. Grain switches to light speckle that screens onto the dark stage.
+
+```bash
+node skills/lib/make-dark.mjs --kits                       # rebuild kits/*.dark.css after editing a light kit
+node skills/lib/make-dark.mjs output/<project>/infographics/src   # writes src-dark/ beside it
+node skills/infographic/render.mjs output/<project>/infographics/src-dark --out output/<project>/infographics/dark
+```
+Then **look at every dark render**. Watch for SVG elements that relied on the default black fill, and for anything that read as "light = unimportant" and now glows.
+
 ---
 
 ## 3. Typography

@@ -35,6 +35,8 @@ node skills/animated-video/render.mjs output/<project>/videos/src/<slug>.html --
 ffprobe -v error -show_entries stream=width,height:format=duration output/<project>/videos/<slug>.mp4
 ```
 
+**Dark mode:** `node skills/lib/make-dark.mjs output/<project>/videos/src`, then render each file in `src-dark/` to `videos/dark/<slug>.mp4` (see `house-style.md` §2b).
+
 ## 4. Gotchas (learned the hard way)
 - **Never use `will-change`** on animated elements. The renderer seeks animations while paused, and Chrome then paints stale layers, so elements vanish in the screenshots.
 - **Size Lucide icons explicitly** (`width`/`height` on the `<i>` or a class). The kit's `.lucide { width: 1em }` shrinks them to the font size otherwise.
