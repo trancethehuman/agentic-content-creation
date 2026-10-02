@@ -48,6 +48,13 @@ output/<project>/
    - Animated video (reels, LinkedIn video) → [`skills/animated-video/SKILL.md`](skills/animated-video/SKILL.md)
 4. **Look at your output** (open the PNG or still frames) and iterate. Never ship a render you have not looked at.
 
+## Quality gate: content must fit the format (always)
+Before calling anything done, **check that all content sits inside the borders of the format** (1080×1350, 2160×2700, 1080×1440…). Nothing may be cut off at the bottom or sides, crammed against an edge, or hidden inside a clipped box. This is the most common failure: a dense cheat sheet quietly running off the bottom.
+- Both renderers run an automatic fit check (`skills/lib/fit-check.mjs`) and print `⚠ OVERFLOW`, `⚠ CLIPPED` (content hidden inside a box), or `⚠ MARGIN` (content in the outer half of the margin). They exit with an error when anything fails. The video renderer checks the whole timeline before it encodes.
+- **A piece is not done until the renderer prints `✓`** *and* you have looked at the image yourself, especially the bottom edge and the last line of every card.
+- If it doesn't fit, cut content or simplify. Don't shrink type below the minimums or squeeze the margins.
+- Only an element deliberately designed to bleed off the edge may opt out, with `data-bleed="true"`.
+
 ## Content rules
 - Use only facts you have verified; put them in the brief with their sources. Do not invent numbers.
 - Default audience is beginners: grade-5 vocabulary, short sentences, concrete examples over theory.

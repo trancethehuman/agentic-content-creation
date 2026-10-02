@@ -41,7 +41,7 @@ node skills/infographic/render.mjs output/<project>/infographics/src/NN-slug.htm
 node skills/infographic/render.mjs output/<project>/infographics/src --out output/<project>/infographics   # whole folder
 # --scale 2 for a 2160px-wide, extra-crisp export
 ```
-The renderer prints `✓` or `⚠ OVERFLOW` (content spills past the canvas).
+The renderer runs a **fit check** and prints `✓`, or `⚠ OVERFLOW` / `⚠ CLIPPED` / `⚠ MARGIN` with the offending elements, then exits with an error. A piece is not done until it prints `✓` **and** you've looked at the bottom edge yourself (see the Quality gate in `AGENTS.md`).
 
 ## 5. Review loop (required)
 Open every PNG and critique it:

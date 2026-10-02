@@ -35,5 +35,12 @@ node skills/animated-video/render.mjs output/<project>/videos/src/<slug>.html --
 ffprobe -v error -show_entries stream=width,height:format=duration output/<project>/videos/<slug>.mp4
 ```
 
-## 4. Review loop (required)
+## 4. Gotchas (learned the hard way)
+- **Never use `will-change`** on animated elements. The renderer seeks animations while paused, and Chrome then paints stale layers, so elements vanish in the screenshots.
+- **Size Lucide icons explicitly** (`width`/`height` on the `<i>` or a class). The kit's `.lucide { width: 1em }` shrinks them to the font size otherwise.
+- **Exit animations use `forwards`, not `both`.** With two animations on one element, an exit with `both` applies its first keyframe before it starts, and that overrides the entrance.
+- **Every scene needs a defined end time** (or explicitly runs to the end). An undefined CSS variable in `animation-delay` invalidates the whole declaration, so the scene shows from t=0.
+- **Fit check:** the renderer checks the timeline every 0.5s and refuses to encode if content leaves the 1080×1440 frame (pass `--force` only for a deliberate bleed).
+
+## 5. Review loop (required)
 Look at the stills. Check that the previous scene is fully gone before the next one appears, that nothing goes off-canvas, that every hold is readable on a phone, and that the motion stays calm (no bounces, spins, or glows).

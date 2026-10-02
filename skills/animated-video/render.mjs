@@ -17,6 +17,7 @@ import { chromium } from "playwright";
 import { spawn } from "node:child_process";
 import { resolve, dirname, basename, join } from "node:path";
 import { pathToFileURL } from "node:url";
+import { fitCheck, report } from "../lib/fit-check.mjs";
 
 const args = process.argv.slice(2);
 const opt = (name, fallback) => {
@@ -55,9 +56,21 @@ duration = Number(duration ?? (await page.evaluate(() => document.querySelector(
 if (still) {
   await page.evaluate((ms) => window.__seek(ms), Number(still) * 1000);
   await page.screenshot({ path: out, clip });
-  console.log(`✓ ${out}`);
+  // Fit check on this frame: nothing may sit outside the 1080×1440 borders.
+  const ok = report(await page.evaluate(fitCheck), out);
   await browser.close();
-  process.exit(0);
+  process.exit(ok ? 0 : 1);
+}
+
+// Fit check across the timeline (every 0.5s) before spending time on encoding.
+const issues = new Map();
+for (let t = 0; t <= duration; t += 0.5) {
+  await page.evaluate((ms) => window.__seek(ms), t * 1000);
+  for (const p of await page.evaluate(fitCheck)) if (p.kind !== "MARGIN") issues.set(p.kind + p.what, { ...p, what: `${p.what} @ ${t}s` });
+}
+if (issues.size) {
+  report([...issues.values()], `${basename(file)} (content leaves the frame; fix before rendering, or pass --force)`);
+  if (!args.includes("--force")) { await browser.close(); process.exit(1); }
 }
 
 const frames = Math.round(duration * fps);
