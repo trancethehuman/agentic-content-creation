@@ -1,0 +1,15 @@
+{
+  "name": "agentic-content-creation",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Create content (infographics, videos, reels, posts, posters) agentically.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "render:infographic": "node skills/infographic/render.mjs",
+    "render:video": "node skills/animated-video/render.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.55.0"
+  }
+}

@@ -1,0 +1,141 @@
+/* ==========================================================================
+   Symphony kit: CSS tokens + primitives for the "Oregon Symphony" design
+   language (see ../oregon-symphony.md). Palantir-style HUD details and
+   Modal-style diagram grids are included as optional primitives.
+
+   Used by: skills/infographic (1080x1350 stills) and
+            skills/animated-video (1080x1440 animations).
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..600;1,6..72,200..600&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=block");
+
+:root {
+  /* Neutrals: the stage */
+  --ink:        #0D0D0D;   /* page background, near-black */
+  --ink-2:      #161616;   /* raised surface */
+  --ink-3:      #222222;   /* card surface */
+  --graphite:   #343434;   /* hairlines on dark */
+  --stone:      #726F6E;   /* muted labels */
+  --fog:        #CACACA;   /* body copy on dark */
+  --paper:      #F4F4F4;   /* light surface */
+  --white:      #FFFFFF;
+
+  /* Signature greens */
+  --green:      #8AE679;   /* the one loud color */
+  --forest:     #193D21;   /* green-on-green panels */
+  --forest-2:   #22512C;   /* hover / secondary panel */
+
+  /* Supporting "Oregon landscape" hues: use sparingly, one per piece */
+  --butter:     #FFF38A;
+  --olive:      #574D2A;
+  --peach:      #FCDAAC;
+  --wine:       #530B21;
+  --slate:      #2F515A;
+
+  /* Type */
+  --serif: "Newsreader", "Victor Serif", Georgia, serif;
+  --sans:  "Geist", "Lab Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --mono:  "Geist Mono", "Lab Grotesque Mono", ui-monospace, monospace;
+
+  /* Layout */
+  --margin: 72px;
+  --radius: 22px;
+  --hair:   1.5px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--ink); }
+body {
+  color: var(--white);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+/* --- Canvas ------------------------------------------------------------ */
+.canvas {
+  position: relative;
+  width: 1080px;
+  height: 1350px;            /* LinkedIn 4:5 portrait */
+  overflow: hidden;
+  background: var(--ink);
+  padding: var(--margin);
+  display: flex;
+  flex-direction: column;
+}
+.canvas.video { height: 1440px; }   /* 3:4 portrait for video */
+
+/* --- Header / footer bars ---------------------------------------------- */
+.topbar, .footbar {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--mono); font-size: 19px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--stone);
+}
+.topbar { padding-bottom: 22px; border-bottom: var(--hair) solid var(--graphite); }
+.footbar { margin-top: auto; padding-top: 22px; border-top: var(--hair) solid var(--graphite); }
+.topbar b, .footbar b { color: var(--white); font-weight: 500; }
+
+/* --- Type -------------------------------------------------------------- */
+.kicker {
+  font-family: var(--mono); font-size: 20px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--green);
+}
+.display {                         /* big light serif headline */
+  font-family: var(--serif); font-weight: 300;
+  font-size: 92px; line-height: 1.02; letter-spacing: -0.015em;
+}
+.display em, .title em { font-style: italic; color: var(--green); }
+.title {
+  font-family: var(--serif); font-weight: 300;
+  font-size: 64px; line-height: 1.06; letter-spacing: -0.01em;
+}
+.h3 { font-family: var(--sans); font-weight: 500; font-size: 34px; line-height: 1.2; }
+.lede { font-family: var(--sans); font-weight: 400; font-size: 34px; line-height: 1.38; color: var(--fog); }
+.body { font-family: var(--sans); font-weight: 400; font-size: 28px; line-height: 1.42; color: var(--fog); }
+.small { font-family: var(--sans); font-size: 23px; line-height: 1.4; color: var(--stone); }
+.mono { font-family: var(--mono); letter-spacing: .02em; }
+.label {
+  font-family: var(--mono); font-size: 18px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--stone);
+}
+.green { color: var(--green); } .white { color: var(--white); } .fog { color: var(--fog); }
+
+/* --- Pills (Oregon Symphony service tags) ----------------------------- */
+.pill {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--mono); font-size: 18px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--white); border: var(--hair) solid var(--fog); border-radius: 999px;
+  padding: 9px 20px 9px 16px; white-space: nowrap;
+}
+.pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.pill.solid { background: var(--green); color: var(--ink); border-color: var(--green); }
+.pill.green { color: var(--green); border-color: var(--green); }
+
+/* --- Surfaces ---------------------------------------------------------- */
+.panel { background: var(--forest); border-radius: var(--radius); padding: 40px; color: var(--green); }
+.card  { background: var(--ink-2); border: var(--hair) solid var(--graphite); border-radius: var(--radius); padding: 36px; }
+.rule  { height: var(--hair); background: var(--graphite); width: 100%; }
+
+/* --- Palantir HUD details --------------------------------------------- */
+.hud { position: relative; }
+.hud::before, .hud::after {            /* crosshair corner ticks */
+  content: ""; position: absolute; width: 18px; height: 18px;
+  border-color: var(--fog); border-style: solid; opacity: .8;
+}
+.hud::before { top: -10px; left: -10px; border-width: var(--hair) 0 0 var(--hair); }
+.hud::after  { bottom: -10px; right: -10px; border-width: 0 var(--hair) var(--hair) 0; }
+.arrow-ret::before { content: "↳ "; color: var(--green); }
+.num { font-family: var(--mono); font-size: 18px; color: var(--stone); letter-spacing: .1em; }
+
+/* --- Modal-style diagram cells ---------------------------------------- */
+.cells { display: grid; gap: 10px; }
+.cell { width: 30px; height: 30px; border-radius: 6px; background: var(--ink-3); border: var(--hair) solid var(--graphite); }
+.cell.on { background: var(--forest); border-color: var(--green); }
+
+/* --- Probability bars -------------------------------------------------- */
+.bar { height: 14px; border-radius: 999px; background: var(--ink-3); overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--green); border-radius: 999px; }
+
+/* Utility */
+.row { display: flex; gap: 24px; } .col { display: flex; flex-direction: column; gap: 24px; }
+.grow { flex: 1; } .center { align-items: center; } .between { justify-content: space-between; }

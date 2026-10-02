@@ -1,0 +1,6 @@
+# Generated content lives here and is not checked in (yet)
+output/
+
+node_modules/
+.DS_Store
+*.log
