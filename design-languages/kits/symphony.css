@@ -64,6 +64,8 @@ body {
   flex-direction: column;
 }
 .canvas.video { height: 1440px; }   /* 3:4 portrait for video */
+/* Never let flex squeeze content to fit: overflow must spill so the renderer can flag it. */
+.canvas > * { flex-shrink: 0; }
 
 /* No header/footer bars: house rule bans metadata, numbering, dividers and
    slashes on graphics (see AGENTS.md → House rules). */
