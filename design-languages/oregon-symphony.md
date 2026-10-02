@@ -10,6 +10,19 @@ This document records how it works in enough detail that an agent can recreate i
 
 ---
 
+## 0. House rules: less is more (these override everything below)
+
+The reference site uses hairlines, numbered labels, and little UI marks. **We do not.** On every graphic and every video:
+
+- **No metadata.** No series name, topic tag, source or credit footer, date, or header/footer bar. The piece is the content.
+- **No numbering.** Each piece stands alone. No "1 of 5", "06 / 15", chapter or scene counters, or numbered section labels.
+- **No slashes or dividers.** No hairline rules, separator lines, progress lines, "/" or "·" separators, decorative "—", or "↳" arrows.
+- **No random decoration.** No corner ticks, crosshairs, stray dots, or construction marks that do not explain something.
+- **No kicker or subtitle above the headline**, and no stacks of big text, subtext, and small text. One headline + the main visual, plus at most one short sentence. About two text sizes per piece.
+- **Instead:** a strong headline, a beautiful Fictive Kin-style illustration, and nicely designed diagrams or flowcharts. Separate things with **space** or a **surface colour**, never a line.
+
+---
+
 ## 1. The feeling in five words
 
 **Dark. Calm. Precise. Warm. Electric.**
@@ -78,7 +91,7 @@ The site uses three families, each with exactly one job:
 - Section heads ("Music for All", "Bridgetown"): sans at roughly 2× body size, regular weight, white.
 - Body: sans, about 17px on the web, line-height about 1.45, white or light grey, set in a **narrow column of about 40–45 characters**.
 - Mono labels: 11px, **bold, uppercase, letter-spacing 0.06em**, colour `#726F6E`.
-- Service pills: mono uppercase, wide letter-spacing, 1px light outline, fully rounded, with a small **• dot** before the text.
+- Service pills: mono uppercase, wide letter-spacing, 1px light outline, fully rounded, with a small • dot before the text. (We keep the pill and drop the dot.)
 
 ### 3.2 Scaled for social (1080px wide canvas)
 | Style | Font | Size / line-height | Notes |
@@ -89,9 +102,9 @@ The site uses three families, each with exactly one job:
 | `.lede` | Geist 400 | 30–34px / 1.38 | `--fog`. 1–2 sentences |
 | `.body` | Geist 400 | 25–28px / 1.42 | `--fog`. Never smaller than 24px on social |
 | `.h3` | Geist 500 | 30–34px / 1.2 | White, or green inside a forest panel |
-| `.kicker` | Geist Mono | 20px, +0.14em, UPPERCASE | Green, starts with `↳` |
-| `.label` | Geist Mono | 18px, +0.12em, UPPERCASE | `--stone` |
-| `.pill` | Geist Mono | 18px, +0.10em, UPPERCASE | 1.5px outline, `•` dot, radius 999px |
+| ~~`.kicker`~~ | | | **Not used.** No line above the headline (house rule) |
+| `.label` | Geist Mono | 18px, +0.12em, UPPERCASE | `--stone`. Only *inside* diagrams, to name things |
+| `.pill` | Geist Mono | 18px, +0.10em, UPPERCASE | 1.5px outline, radius 999px, no dot. Only for labels that carry meaning |
 
 ### 3.3 Type rules
 - **Pair serif and mono deliberately.** Serif means human and emotional ("Sorting money, *in a blink.*"). Mono means machine and factual ("97% · −$6.40 · 0.1 SEC").
@@ -106,7 +119,7 @@ The site uses three families, each with exactly one job:
 
 - **Asymmetric two-column editorial grid.** On the site, the title sits in the left third and body copy in the middle third, leaving the right third empty. On a portrait canvas, translate this into a left-aligned text column with the illustration pushed to one side.
 - **Generous margins**: 72px on a 1080px canvas (6.7%). The top bar and footer bar sit inside them.
-- **Hairline bars** frame the canvas: a mono top bar (series name left, number and topic right) with a 1.5px `--graphite` rule beneath, and a matching footer bar.
+- **No frame furniture.** The site frames pages with nav bars and hairlines; we use **no header, footer, rules, or metadata**. The headline sits directly on the stage.
 - **Big vertical rhythm.** Major blocks are separated by 40–56px. When unsure, add space rather than content.
 - **Rounded rectangles** (radius about 20px) for panels and cards. The site uses them for every image and the palette tiles.
 - **One hero per frame**: a headline *or* an illustration *or* a data block carries the frame. Everything else supports it.
@@ -120,7 +133,7 @@ These come straight from the identity system on the case-study page:
 
 1. **The Bridgetown curve.** Portland has 12 bridges, and the identity borrows their suspension curves: a pair of concave arcs meeting at a sharp peak, like the green peak on forest green. Use it as a hero shape, a divider, or a "connection" line between two things.
 2. **Text on a path.** The tagline is set along a big looping ribbon, in green on forest. It is good for a single quote, used at most once per series.
-3. **Construction drawings.** The wordmark is shown with its geometry exposed: dashed bounding boxes, circles at the corners, tiny mono captions ("ADDED CORNER RADIUS", "REFINED GEOMETRIC FORM") with thin leader lines. **This is our main way of annotating illustrations.**
+3. **Construction drawings.** The wordmark is shown with its geometry exposed: dashed bounding boxes, circles at the corners, tiny mono captions ("ADDED CORNER RADIUS", "REFINED GEOMETRIC FORM") with thin leader lines. We borrow this **only when the annotation explains something** (e.g. a label naming the box the model picked). Never use it as decoration.
 4. **Giant ghost type.** "OREGON SYMPHONY" set huge in `#1E1E1E` on `#0D0D0D`, almost invisible, bleeding off the edges. It works as a background texture behind one key word.
 5. **Conductor lines.** Thin green strokes slicing across a photo, tracing the conductor's motion. In vector, use a few long, thin, straight or gently curved green lines crossing an illustration.
 6. **Monogram in a circle.** The "OS" mark is a single-weight line drawing. Our illustrations follow it: **single-weight line art, 2.5px strokes, round caps and joins.**
@@ -130,7 +143,7 @@ These come straight from the identity system on the case-study page:
 - Use inline SVG with **line art only**: `stroke-width: 2.5`, round caps and joins, `fill: none` or flat `--forest` fills.
 - Draw in green on forest, or white and grey on ink with a single green element (the "answer").
 - Build from simple geometry (rounded rectangles, circles, arcs, dotted connectors) plus one recognisable object (receipt, browser window, router, ticket, shield, flowchart diamond).
-- Add one construction detail: corner ticks, a dashed bounding box, or a tiny mono caption with a leader line.
+- Label only with meaning: a short word placed next to the thing it names. No corner ticks, crosshairs, or decorative marks.
 - Keep it friendly, not technical. A beginner should recognise the object in one second.
 
 ---
@@ -153,7 +166,7 @@ Motion on the site is slow and theatrical: text rises gently out of darkness, an
 
 - Warm, plain, and confident. The site says *"Music for All"*; we say *"AI for everyone."*
 - Write short sentences at about a grade-5 reading level. Use concrete nouns: coffee, receipt, button, ticket.
-- Mono labels speak like a machine (`JEV PICKS · HOW SURE`); headlines speak like a person.
+- Mono labels speak like a machine (`JEV PICKS`, `HOW SURE`); headlines speak like a person.
 
 ---
 
@@ -167,15 +180,19 @@ Motion on the site is slow and theatrical: text rises gently out of darkness, an
 | Use flat colour tiles from the palette | Gradients, neon glows, drop shadows |
 | Use single-weight line art with construction marks | Stock 3D blobs, emoji clip-art |
 | Use slow fades and long holds | Fast cuts, bounces, kinetic-type chaos |
+| Use space and surface colour between sections | Divider lines, slashes, "·" separators |
+| Let the piece stand alone | Series names, "1 of 5", topic tags, credit footers |
+| Use beautiful illustrations and flowcharts | Corner ticks, crosshairs, random decorative marks |
 
 ---
 
 ## 9. Checklist before shipping a piece
 
 - [ ] Background is `#0D0D0D`; green covers ≤10% of the frame
-- [ ] Exactly one serif headline, with at most one green italic phrase
+- [ ] Exactly one serif headline, with at most one green italic phrase, and **nothing above it**
+- [ ] About two text sizes: the headline plus at most one short supporting sentence
 - [ ] All numbers are in mono
 - [ ] Body copy is ≥24px at 1080 wide and reads at grade 5
-- [ ] There is a hero illustration with line art and one construction detail
-- [ ] Top and bottom hairline bars are present
+- [ ] There is a hero illustration (line art) that a beginner understands in one second
+- [ ] No metadata (series, topic, source, date), no numbering, no dividers, slashes, or decorative marks
 - [ ] Nothing spills off the canvas (the renderer warns `⚠ OVERFLOW`)

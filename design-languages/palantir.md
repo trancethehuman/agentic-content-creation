@@ -37,8 +37,8 @@ Palantir was hard to describe, so Fictive Kin chose not to describe it: *"Rather
 The video moves slowly through black-and-white footage. The UI zooms smoothly into a tile and the crosshairs lock on. It feels like an instrument focusing, not like a website animating.
 
 ## 6. How we use it
-- Use `.hud` corner ticks on the main illustration or data block.
-- Use `↳` in kickers and `→` on "next step" rows.
-- Use numbered mono labels (`01 —`) for steps and lists.
-- Use crosshairs (⊕) to show "the model is looking at this", which is perfect for computer-use and bounding-box illustrations.
+Most of the HUD vocabulary above (↳ arrows, crosshairs, corner brackets, hairline rules, numbered labels, "/ END MESSAGE") is **banned by the house rules** in `AGENTS.md`: no dividers, slashes, numbering, or decorative marks. What we keep is the *attitude*:
+- Show, don't tell: one strong statement and one strong image.
+- Austere restraint: lots of black, very few elements.
+- A **focus box** around the thing the model picked, but only where it carries meaning (e.g. the button a computer-use agent clicks). Draw it as a simple rounded outline, never with crosshairs or corner ticks.
 - **Do not** adopt the black-and-white photography or the orange accent alongside Oregon green. Pick one accent per piece.

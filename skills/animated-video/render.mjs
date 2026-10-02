@@ -47,7 +47,8 @@ const longest = await page.evaluate(() => {
     for (const a of document.getAnimations()) { a.pause(); a.currentTime = ms; }
   };
   window.__seek(0);
-  return Math.max(0, ...document.getAnimations().map((a) => a.effect.getComputedTiming().endTime || 0));
+  // Infinite animations (orbits, spins) don't define a length; set <meta name="duration"> when using them.
+  return Math.max(0, ...document.getAnimations().map((a) => a.effect.getComputedTiming().endTime).filter(Number.isFinite));
 });
 duration = Number(duration ?? (await page.evaluate(() => document.querySelector('meta[name="duration"]')?.content)) ?? longest / 1000);
 

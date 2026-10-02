@@ -1,0 +1,48 @@
+/* ==========================================================================
+   Folk motion kit: keyframes + primitives for the Ordinary Folk animation
+   language (see ../animations/ordinary-folk.md). Pair with symphony.css
+   for palette and type. All animations are CSS, so the renderer can seek
+   them frame by frame.
+   ========================================================================== */
+
+:root {
+  --ease-move: cubic-bezier(.65, 0, .35, 1);
+  --ease-expo: cubic-bezier(.87, 0, .13, 1);
+  --ease-pop:  cubic-bezier(.34, 1.56, .64, 1);
+  --ease-text: cubic-bezier(.22, 1, .36, 1);
+  --stage-light: #E2E6E5;
+}
+
+/* Gradient sphere family (Oregon palette) ------------------------------- */
+.sphere        { border-radius: 50%; background: radial-gradient(circle at 34% 30%, #E6FBE0 0%, #8AE679 38%, #22512C 100%); }
+.sphere.butter { background: radial-gradient(circle at 34% 30%, #FFFBE0 0%, #FFF38A 40%, #8A7A2A 100%); }
+.sphere.peach  { background: radial-gradient(circle at 34% 30%, #FFF4E6 0%, #FCDAAC 42%, #B07A55 100%); }
+.sphere.slate  { background: radial-gradient(circle at 34% 30%, #CFE6EC 0%, #5F95A3 40%, #1C3439 100%); }
+.sphere.wine   { background: radial-gradient(circle at 34% 30%, #F2B9C8 0%, #A3324F 40%, #3A0716 100%); }
+.sphere.ghost  { background: radial-gradient(circle at 34% 30%, #4A4A4A 0%, #262626 55%, #141414 100%); }
+.aura          { border-radius: 50%; filter: blur(90px); opacity: .42; background: #8AE679; pointer-events: none; }
+
+/* Film grain overlay: put <div class="grain"></div> last inside .canvas */
+.grain {
+  position: absolute; inset: 0; pointer-events: none; opacity: .09; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Keyframes -------------------------------------------------------------- */
+@keyframes of-pop      { 0% { transform: scale(0); opacity: 0 } 60% { opacity: 1 } 100% { transform: scale(1); opacity: 1 } }
+@keyframes of-unpop    { from { transform: scale(1); opacity: 1 } to { transform: scale(0); opacity: 0 } }
+@keyframes of-fade-in  { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: none } }
+@keyframes of-fade-out { from { opacity: 1 } to { opacity: 0 } }
+@keyframes of-breathe  { 0%, 100% { transform: scale(1) } 50% { transform: scale(1.025) } }
+@keyframes of-spin     { to { transform: rotate(360deg) } }
+@keyframes of-draw     { from { stroke-dashoffset: 1 } to { stroke-dashoffset: 0 } }   /* use pathLength="1" + stroke-dasharray:1 */
+@keyframes of-erase    { from { stroke-dashoffset: 0 } to { stroke-dashoffset: -1 } }
+@keyframes of-ride     { from { offset-distance: 0% } to { offset-distance: 100% } }
+@keyframes of-pulse-ring { from { transform: scale(1); opacity: .6 } to { transform: scale(1.9); opacity: 0 } }
+
+/* Helpers ------------------------------------------------------------------ */
+/* Headline text: fade in, then (with a second animation) fade out.
+   Example: animation: of-fade-in .8s var(--ease-text) 3.2s both, of-fade-out .5s var(--ease-text) 8.5s both; */
+.of-text { opacity: 0; }
+/* Staggered children: set style="--i:0" … on each child and --t0 on the parent */
+.of-wave > * { animation: of-pop .7s var(--ease-pop) both; animation-delay: calc(var(--t0, 0s) + var(--i, 0) * 60ms); }

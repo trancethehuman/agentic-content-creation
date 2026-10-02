@@ -5,6 +5,18 @@ Instructions for AI agents working in this repo. (Work in progress; more to come
 ## What this repo is
 A workspace for creating content **agentically**: infographics, short videos, Instagram Reels, social posts, posters, and more. Agents do the design and production. Humans give direction and taste.
 
+## House rules (non-negotiable, apply to every graphic and every video)
+**Less is more.** The piece is the content, nothing else. These rules override any design language, reference site, or example in this repo.
+
+1. **No metadata on the graphic.** No series name ("Jev for beginners"), no topic or category tags, no source or credit footers, no dates, no header or footer bars.
+2. **No numbering.** Every piece stands alone. It is not a carousel or a chapter: no "06 / 15", "Part 1 of 5", "Video 2", scene counters, or numbered section labels ("01 —").
+3. **No slashes or dividers.** No hairline rules, separator lines, progress lines, "/" or "·" used as separators, "—" used as decoration, or "↳" arrows.
+4. **No random decorative elements.** No corner ticks, crosshair marks, stray dots, or construction marks that do not explain anything. If an element does not carry meaning, delete it.
+5. **No kicker or subtitle above the headline.** Don't stack a subheader, headline, subtext, big text, and small text. Keep the type **simple, clear, and clean**: one headline, then the main content, plus at most one short supporting sentence if it is truly needed. Use about two text sizes per piece. (Labels inside a diagram are fine when they name things.)
+6. **The main content is what matters:** a beautiful Fictive Kin-style illustration and nicely designed diagrams or flowcharts. Use the space for the illustration and for air.
+7. Separate sections with **space or a surface colour** (a card or panel), never with a line.
+8. **Formats:** author every design as **HTML** (the editable source). Export stills to **PNG** and animations to **MP4**; those are the files that get posted.
+
 ## Where things go
 | Path | What | In git? |
 |---|---|---|
@@ -26,7 +38,7 @@ output/<project>/
 
 ## How to make things
 1. Read `output/<project>/brief.md`. If it does not exist, write one with the human first.
-2. Pick a design language from `design-languages/`. **Default: `oregon-symphony.md`** (the house favourite).
+2. Pick a design language from `design-languages/`. **Stills default: `oregon-symphony.md`** (the house favourite). **Video default: `animations/ordinary-folk.md`** for motion, with Oregon Symphony as the visual influence (palette, type, dark stage).
 3. Follow the matching skill:
    - Static graphics (infographics, posts, posters) → [`skills/infographic/SKILL.md`](skills/infographic/SKILL.md)
    - Animated video (reels, LinkedIn video) → [`skills/animated-video/SKILL.md`](skills/animated-video/SKILL.md)

@@ -39,3 +39,4 @@ Cells light up in waves, the dot-star slowly pulses and rotates, and code types 
 - Use a dot-matrix texture as a quiet background behind a big number.
 - Use box-and-cell diagrams for pipelines (agent → Jev → tools).
 - Recolour into the Oregon palette: cells use `--forest` fills with `--green` outlines; other roles use `--butter`, `--peach`, and `--slate`.
+- **Do not** borrow the numbered feature columns or divider lines (house rules: no numbering, no dividers).

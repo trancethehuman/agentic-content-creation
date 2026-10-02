@@ -15,20 +15,22 @@ Build each graphic as a single HTML file and render it to PNG. Using HTML gives 
   ```
 - Put the source at `output/<project>/infographics/src/NN-slug.html`.
 
+**Formats:** the design is authored as **HTML** (the editable source) and exported as **PNG** (the file you post).
+
+**Follow the House rules in `AGENTS.md`:** less is more, with no metadata, numbering, dividers, slashes, or decorative marks.
+
 ## 2. Structure
 ```html
 <div class="canvas">                       <!-- 1080×1350 (4:5) -->
-  <div class="topbar"><span><b>Series</b> name</span><span>NN / TT · Topic</span></div>
-  … kicker → serif display headline → lede …
-  … ONE hero illustration (inline SVG) …
-  … the grounded example (real-looking data) …
-  <div class="footbar"><span>takeaway</span><span>source</span></div>
+  … serif display headline (+ one short lede) …
+  … ONE hero illustration (inline SVG), big …
+  … the grounded example (real-looking data, or a nicely designed flowchart) …
 </div>
 ```
-Kit classes include `.display`, `.title`, `.lede`, `.body`, `.kicker`, `.label`, `.pill`, `.panel` (forest green), `.card`, `.hud` (corner ticks), `.bar > i` (probability bar), `.cells/.cell.on`, and `.row/.col`. Keep per-piece CSS in a `<style>` block, and do not edit the shared kit for a one-off.
+No header bar, no footer bar, no series name or numbering. Kit classes include `.display`, `.title`, `.lede`, `.body`, `.label`, `.pill`, `.panel` (forest green), `.card`, `.bar > i` (probability bar), `.cells/.cell.on`, and `.row/.col`. Keep per-piece CSS in a `<style>` block, and do not edit the shared kit for a one-off.
 
 ## 3. Illustrations
-Draw hand-built inline SVG as **line art**: `stroke-width 2.5`, round caps and joins, green on forest or grey on ink, with exactly one green "answer" element. Add one construction detail (corner ticks, a dashed box, or a mono caption with a leader line). The illustration should be the visual centrepiece, not a tiny icon.
+Draw hand-built inline SVG as **line art** in the Fictive Kin spirit: `stroke-width 2.5`, round caps and joins, green on forest or grey on ink, with exactly one green "answer" element. Labels only where they name something. No corner ticks, crosshairs, or decorative marks. The illustration should be the visual centrepiece, not a tiny icon.
 
 ## 4. Render
 ```bash
@@ -45,5 +47,6 @@ Open every PNG and critique it:
 - Line breaks: no orphans, and the headline is at most 2–3 lines
 - Copy is short, grade 5, and ≥24px body text
 - Green covers ≤10% of the frame and is used only for "the answer"
+- **House rules:** no metadata, numbering, dividers, slashes, or decorative marks
 
 Iterate until it would stop a thumb mid-scroll.
