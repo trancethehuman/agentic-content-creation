@@ -18,7 +18,7 @@
 2. **No dividers or slashes.** No rules, separator lines, "/", "·", decorative "—", "↳", corner ticks, or crosshairs.
 3. **No kicker above the headline.** One headline, the main visual, and at most one short sentence.
 4. **Monochrome.** Greyscale only. **No accent colour.**
-5. **No italic or coloured emphasis** inside headlines (e.g. a green italic phrase). That trend is over. Emphasise with **weight or darkness** of the whole line, or not at all.
+5. **No italic or coloured emphasis** inside headlines (e.g. a green italic phrase). That trend is over. That includes **grey "ghosted" lines**: a headline is one colour (ink), one weight. Let the words do the work.
 6. **White background** for stills and video.
 7. **Generous negative space.** If in doubt, remove an element or make the margin bigger.
 
