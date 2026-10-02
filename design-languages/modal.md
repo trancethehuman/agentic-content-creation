@@ -40,3 +40,4 @@ Cells light up in waves, the dot-star slowly pulses and rotates, and code types 
 - Use box-and-cell diagrams for pipelines (agent → Jev → tools).
 - Recolour into the Oregon palette: cells use `--forest` fills with `--green` outlines; other roles use `--butter`, `--peach`, and `--slate`.
 - **Do not** borrow the numbered feature columns or divider lines (house rules: no numbering, no dividers).
+- **Monochrome translation (current house style):** Modal's role colours (orange diamonds, green hexagons, violet squares) become **shape-only** distinctions. Lit = ink, idle = mist outline, and role is shown by shape (diamond, hexagon, square) or a Lucide glyph, never by hue. Modal's typefaces map to ours: ABC Diatype → Hanken Grotesk, and DM Mono → DM Mono (identical).

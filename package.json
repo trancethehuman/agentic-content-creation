@@ -10,6 +10,8 @@
     "render:video": "node skills/animated-video/render.mjs"
   },
   "devDependencies": {
+    "lucide": "^1.49.0",
+    "lucide-static": "^1.49.0",
     "playwright": "^1.55.0"
   }
 }

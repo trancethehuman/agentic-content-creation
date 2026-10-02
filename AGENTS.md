@@ -15,7 +15,11 @@ A workspace for creating content **agentically**: infographics, short videos, In
 5. **No kicker or subtitle above the headline.** Don't stack a subheader, headline, subtext, big text, and small text. Keep the type **simple, clear, and clean**: one headline, then the main content, plus at most one short supporting sentence if it is truly needed. Use about two text sizes per piece. (Labels inside a diagram are fine when they name things.)
 6. **The main content is what matters:** a beautiful Fictive Kin-style illustration and nicely designed diagrams or flowcharts. Use the space for the illustration and for air.
 7. Separate sections with **space or a surface colour** (a card or panel), never with a line.
-8. **Formats:** author every design as **HTML** (the editable source). Export stills to **PNG** and animations to **MP4**; those are the files that get posted.
+8. **Monochrome, on white.** Use a white background and greyscale only, with no accent colour. Show emphasis through ink vs. light grey and filled vs. outlined.
+9. **No italic or coloured emphasis** in headlines (e.g. a green italic phrase). That trend is over.
+10. **Icons come from Lucide** (`node_modules/lucide`), at stroke 1.5.
+11. **Generous negative space.** When in doubt, remove something.
+12. **Formats:** author every design as **HTML** (the editable source). Export stills to **PNG** and animations to **MP4**; those are the files that get posted.
 
 ## Where things go
 | Path | What | In git? |
@@ -38,7 +42,7 @@ output/<project>/
 
 ## How to make things
 1. Read `output/<project>/brief.md`. If it does not exist, write one with the human first.
-2. Pick a design language from `design-languages/`. **Stills default: `oregon-symphony.md`** (the house favourite). **Video default: `animations/ordinary-folk.md`** for motion, with Oregon Symphony as the visual influence (palette, type, dark stage).
+2. Follow **`design-languages/house-style.md`** (Monochrome Editorial, distilled from Palantir, Oregon Symphony, and Modal) for everything. For video, add **`design-languages/animations/ordinary-folk.md`** for motion. The individual reference guides explain where each rule comes from.
 3. Follow the matching skill:
    - Static graphics (infographics, posts, posters) → [`skills/infographic/SKILL.md`](skills/infographic/SKILL.md)
    - Animated video (reels, LinkedIn video) → [`skills/animated-video/SKILL.md`](skills/animated-video/SKILL.md)

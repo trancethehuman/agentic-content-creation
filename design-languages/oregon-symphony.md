@@ -1,8 +1,17 @@
-# Design language: Oregon Symphony ★ (house favourite)
+# Design language: Oregon Symphony (Fictive Kin)
 
-> Source: [Fictive Kin — Oregon Symphony](https://fictivekin.com/work/oregon-symphony), studied October 2026.
-> CSS tokens: [`kits/symphony.css`](kits/symphony.css)
-> Status: **default style for this repo.** If a brief does not name a style, use this one.
+> Source: [Fictive Kin: Oregon Symphony](https://fictivekin.com/work/oregon-symphony), studied twice (Oct 2026), including at 1440px desktop width.
+> Status: **reference.** The user's favourite site. Its calm, its space, its type system, and its gesture lines feed into [`house-style.md`](house-style.md), which is what agents build with.
+> **Superseded parts:** the dark stage, the green accent, and the green italic headline phrase (§2–§3 below) are **not** used anymore. The house style is monochrome on white, with no italic or coloured emphasis.
+
+### New findings from the second pass (desktop)
+- **The brand typeface is Neulis Neue** (Light, Regular, Semibold), a geometric sans with gentle ink traps. The specimen lists "NEULIS NEUE LIGHT REGULAR SEMIBOLD ARPEGGIO® OPUS №503 Æ CRESCENDO RIFF & RONDO TONIC * V7-I TERRAIN KODŌ EIGHTH NOTE ECHOS CODA PORTLANDIA". On the symphony's own website, headlines are set in **Neulis Neue Semibold, ALL CAPS** ("FIND JOY IN THE HARMONY OF TIMELESS MUSIC.").
+- The case-study page uses a different, quieter system: Victor Serif Light titles, Lab Grotesque body, and Lab Grotesque Mono labels.
+- **The palette has a white and off-white pair** ("WHITE", "OFF WHITE" tiles with vertical labels) as well as the greens. That light pair is the part we keep.
+- **Gesture lines**: single, continuous, hand-drawn strokes (a conductor's baton path) drawn on flat colour tiles. Each tile has one stroke and nothing else. This is our "gesture line" motif, drawn in ink on a `--snow` tile.
+- **Grid overlays**: the website hero is shown with its 12-column grid drawn over it, as if the design were opened up to show how it is built.
+- The ticketing UI uses light cards, black-and-white photography, and outlined pill tags.
+
 
 Fictive Kin rebranded the oldest orchestra west of the Mississippi to feel *"more welcoming, human"*, dropping the stiff formality of classical music while keeping its quiet confidence. The result is a **dark, calm, mostly empty stage**, where one electric green moves through it like a conductor's baton. It feels expensive because it holds back.
 
@@ -98,7 +107,7 @@ The site uses three families, each with exactly one job:
 |---|---|---|---|
 | `.display` | Newsreader 300 | 88–96px / 1.02 | −0.015em tracking. One idea, two lines max |
 | `.title` | Newsreader 300 | 60–68px / 1.06 | Secondary headline |
-| `em` inside headlines | Newsreader 300 *italic* | | **Set in green.** The emotional word: "*in a blink.*" |
+| ~~`em` inside headlines~~ | | | **Retired.** No italic or coloured emphasis (house rule) |
 | `.lede` | Geist 400 | 30–34px / 1.38 | `--fog`. 1–2 sentences |
 | `.body` | Geist 400 | 25–28px / 1.42 | `--fog`. Never smaller than 24px on social |
 | `.h3` | Geist 500 | 30–34px / 1.2 | White, or green inside a forest panel |
@@ -189,7 +198,7 @@ Motion on the site is slow and theatrical: text rises gently out of darkness, an
 ## 9. Checklist before shipping a piece
 
 - [ ] Background is `#0D0D0D`; green covers ≤10% of the frame
-- [ ] Exactly one serif headline, with at most one green italic phrase, and **nothing above it**
+- [ ] Exactly one headline, with no italic or coloured phrase and **nothing above it**
 - [ ] About two text sizes: the headline plus at most one short supporting sentence
 - [ ] All numbers are in mono
 - [ ] Body copy is ≥24px at 1080 wide and reads at grade 5

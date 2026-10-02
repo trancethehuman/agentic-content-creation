@@ -9,9 +9,12 @@ Build each graphic as a single HTML file and render it to PNG. Using HTML gives 
 
 ## 1. Set up
 - Read the project brief: `output/<project>/brief.md`.
-- Read the design language (default `design-languages/oregon-symphony.md`) and link its kit:
+- Read the house style `design-languages/house-style.md` and link its kit, plus Lucide for icons:
   ```html
-  <link rel="stylesheet" href="<relative path>/design-languages/kits/symphony.css">
+  <link rel="stylesheet" href="<root>/design-languages/kits/mono.css">
+  <script src="<root>/node_modules/lucide/dist/umd/lucide.min.js"></script>
+  …  <i data-lucide="receipt"></i>  …
+  <script>lucide.createIcons({ attrs: { 'stroke-width': 1.5 } })</script>   <!-- end of body -->
   ```
 - Put the source at `output/<project>/infographics/src/NN-slug.html`.
 
@@ -21,16 +24,16 @@ Build each graphic as a single HTML file and render it to PNG. Using HTML gives 
 
 ## 2. Structure
 ```html
-<div class="canvas">                       <!-- 1080×1350 (4:5) -->
+<div class="canvas">                       <!-- 1080×1350 (4:5); class="canvas poster" = 2160×2700 dense cheat sheet -->
   … serif display headline (+ one short lede) …
   … ONE hero illustration (inline SVG), big …
   … the grounded example (real-looking data, or a nicely designed flowchart) …
 </div>
 ```
-No header bar, no footer bar, no series name or numbering. Kit classes include `.display`, `.title`, `.lede`, `.body`, `.label`, `.pill`, `.panel` (forest green), `.card`, `.bar > i` (probability bar), `.cells/.cell.on`, and `.row/.col`. Keep per-piece CSS in a `<style>` block, and do not edit the shared kit for a one-off.
+No header bar, no footer bar, no series name or numbering. Kit classes include `.display`, `.title`, `.lede`, `.body`, `.strong`, `.label`, `.chip`/`.chip.on` (the answer), `.card`, `.frame`, `.solid`, `.bar > i`, `.cells/.cell.on`, and `.row/.col`. Keep per-piece CSS in a `<style>` block, and do not edit the shared kit for a one-off.
 
 ## 3. Illustrations
-Draw hand-built inline SVG as **line art** in the Fictive Kin spirit: `stroke-width 2.5`, round caps and joins, green on forest or grey on ink, with exactly one green "answer" element. Labels only where they name something. No corner ticks, crosshairs, or decorative marks. The illustration should be the visual centrepiece, not a tiny icon.
+Use monochrome diagrams and interface-as-illustration (see `house-style.md` §6): ink for the answer and taken path, mist for context. Use **Lucide icons** for nouns (stroke 1.5); hand-draw only what Lucide lacks. Labels only where they name something. No corner ticks, crosshairs, or decorative marks. The diagram is the centrepiece, with air on all sides.
 
 ## 4. Render
 ```bash
@@ -46,7 +49,7 @@ Open every PNG and critique it:
 - A single dominant hero, with a clear hierarchy
 - Line breaks: no orphans, and the headline is at most 2–3 lines
 - Copy is short, grade 5, and ≥24px body text
-- Green covers ≤10% of the frame and is used only for "the answer"
+- White page, greyscale only; ink is used for "the answer" only; no italic or coloured words
 - **House rules:** no metadata, numbering, dividers, slashes, or decorative marks
 
 Iterate until it would stop a thumb mid-scroll.

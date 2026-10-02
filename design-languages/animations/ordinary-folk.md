@@ -7,7 +7,7 @@
 > - [CryptoCubes](https://www.ordinaryfolk.co/project/cryptocubes), a case study: *"a minimalist, cube-centric design … Spheres will always be our first love."*
 >
 > Motion kit: [`../kits/folk-motion.css`](../kits/folk-motion.css)
-> Use together with the visual language [`../oregon-symphony.md`](../oregon-symphony.md) (palette and type). See §9.
+> Use together with the visual language [`../house-style.md`](../house-style.md) (white, monochrome, Hanken Grotesk, Lucide) and its kit `../kits/mono.css`. See §9.
 
 Ordinary Folk is a motion-design studio in Vancouver (creative direction: Jorge R. Canedo E.). Their explainers make abstract ideas feel physical. **A few simple geometric shapes (a dot, a sphere, a ring, a cube) keep transforming into each other, and that transformation *is* the explanation.** Nothing cuts. Everything flows. It is calm, musical, and quietly delightful.
 
@@ -58,7 +58,7 @@ Same as [`AGENTS.md`](../../AGENTS.md): **less is more.** On screen there is no 
 | Coral | `#EC6D5C` / `#D8726D` |
 | Butter | `#F6D574` |
 
-*Equilibrium* uses **tinted monochrome stages**: a mint field behind a green object, butter behind gold, blush behind pink. The **stage colour cross-fades as the object changes colour**, which works like a scene change without a cut.
+*Equilibrium* uses **tinted monochrome stages**: a mint field behind a green object, butter behind gold, blush behind pink. The **stage colour cross-fades as the object changes colour**, which works like a scene change without a cut. (For us, in greyscale, the stage cross-fades between `--paper` and `--snow` instead.)
 
 ### 3.2 Surface treatment
 - **Radial gradient fills**: light core → saturated edge, or the reverse. Never flat fills on hero shapes.
@@ -76,7 +76,7 @@ Text is rare. When it appears:
 - It fades in after the motion settles and fades out before the next transformation.
 - A label may connect to the part it names with a thin line. **For us: use a short solid line only when the label names a specific part.** Otherwise place the label next to the thing. (House rules: no decorative dashes.)
 
-For our videos, headlines follow the Oregon Symphony type (Newsreader Light), as described in §9.
+For our videos, headlines follow the house style (Hanken Grotesk Light), as described in §9.
 
 ---
 
@@ -157,8 +157,9 @@ The renderer seeks CSS animations frame by frame, so all of this is deterministi
 --ease-text:  cubic-bezier(.22, 1, .36, 1);
 
 /* Gradient sphere + aura */
-.sphere { border-radius: 50%; background: radial-gradient(circle at 35% 30%, #CFF7C4 0%, #8AE679 35%, #22512C 100%); }
-.aura   { border-radius: 50%; background: #8AE679; filter: blur(90px); opacity: .45; }
+.sphere     { border-radius: 50%; background: radial-gradient(circle at 34% 28%, #FFFFFF 0%, #E4E4E4 38%, #9A9A9A 100%); }
+.sphere.ink { background: radial-gradient(circle at 34% 28%, #6A6A6A 0%, #262626 45%, #050505 100%); }  /* the answer */
+.aura       { border-radius: 50%; background: #9C9C9C; filter: blur(90px); opacity: .35; }
 
 /* Staggered array: put --i on each child */
 .wave > * { animation: of-pop .7s var(--ease-pop) both; animation-delay: calc(var(--t0) + var(--i) * 60ms); }
@@ -179,29 +180,47 @@ Grain: one absolutely positioned layer with an SVG `feTurbulence` noise as a dat
 
 ---
 
-## 9. Blending with Oregon Symphony (our house video style)
+## 9. Blending with the house style (Monochrome Editorial)
 
-The user's direction: **Ordinary Folk is the animation style; Oregon Symphony is the influence.** So:
+The user's direction: **Ordinary Folk is the motion language; [`house-style.md`](../house-style.md) is the look.** That means a white stage, greyscale only, Hanken Grotesk, Lucide icons, and Palantir-like restraint. Ordinary Folk's own monochrome work (CryptoCubes' grey cubes and Praxis's pale stage) shows this works.
 
-| From Ordinary Folk | From Oregon Symphony |
+| From Ordinary Folk | From the house style |
 |---|---|
-| Motion grammar (§5): transform-don't-cut, easing, stagger, orbits, breathing holds | **Stage**: ink `#0D0D0D` (the dark stage), with a light `#E2E6E5` Praxis stage allowed for one "insight" scene |
-| Shape language: dot, sphere, ring, tile, ribbon | **Palette**: spheres and dots in `--green #8AE679`, `--forest #193D21`, `--butter #FFF38A`, `--peach #FCDAAC`, `--slate #2F515A`, `--wine #530B21` (butter = unsure, wine = blocked) |
-| Gradient fills + aura + grain | **Headline type**: Newsreader Light, 84–96px, white, with one green italic phrase |
-| Text beside the object, sparse | Calm, premium restraint, with green covering ≤10% of the frame |
+| Motion grammar (§5): transform-don't-cut, easing, staggering, orbits, breathing holds | **Stage**: white `#FFFFFF`, with the Praxis-like `--snow #F6F6F6` for a quiet panel |
+| Shape language: dot, sphere, ring, tile, ribbon | **Colour**: greyscale only. The answer is ink (`.sphere.ink`); options are light grey (`.sphere`, `.sphere.ghost`). Uncertainty is shown as mid-grey (`.sphere.mid`) |
+| Gradient fills + soft aura + fine grain | **Type**: one Hanken Grotesk 300 headline per scene (76–88px), with no italic or coloured words. DM Mono for numbers |
+| Text beside the object, sparse | **Icons**: Lucide at stroke 1.5, used as nouns inside nodes |
+
+### 9.1 Interactive-looking diagrams (required for our videos)
+The user wants the illustrations to **look like a live product being used**, Palantir-style "operable" UI animated with Ordinary Folk's smoothness:
+
+| Interaction | How to animate it (CSS only) |
+|---|---|
+| **Cursor click** | A Lucide `mouse-pointer-2` glides along an eased path (`offset-path`, or translate keyframes with `--ease-move`). On arrival the target button scales 1 → 0.96 → 1 (120ms) and fills from outline to ink |
+| **Hover / highlight** | A list row's background fades `--paper` → `--snow` while its arrow nudges 6px right |
+| **Toggle** | The knob translates across (300ms `--ease-move`) and the track fills `--mist` → `--ink` |
+| **Dropdown pick** | A panel scales from 0.96 (opacity 0 → 1); options stagger in at 60ms; one option gets the ink fill; the panel closes and the value appears in the field |
+| **Typing** | Characters revealed by stepping `width` (`steps(n)`) in DM Mono, with a blinking caret, used sparingly |
+| **Signal along a connector** | A small ink dot rides the path (`offset-path` + `of-ride`) and the destination node fills mist → ink when it arrives |
+| **Counting number** | Stack the digits in a column and translate it with `steps()`, or crossfade 3–4 intermediate values. Always DM Mono |
+| **Bar fill** | `transform: scaleX(0 → p)` with `transform-origin: left` and `--ease-move` |
+| **Selection box snap** | A rounded ink outline scales from 1.15 → 1 around the chosen element, with opacity 0 → 1 |
+| **Zoom into tile** (Palantir) | The camera layer scales 1 → 2.2 toward the chosen tile while the other tiles fade to `--fog` |
+
+Use 1–2 interactions per scene. Keep them deliberate and readable: the cursor moves at a human pace (0.8–1.2s per move), never teleports, and pauses briefly before clicking.
 
 Explainer translation for Jev, for example:
-- *A decision* = a dot. *Choices* = 3–5 small spheres in a row. *Jev picking* = all choice-dots pulse **at once** and one swells green (parallel), vs. an LLM's dots appearing **one by one** along a path (word by word).
-- *Confidence* = the aura's size and brightness around the chosen sphere.
-- *Routing* = a dot travelling a path that forks; the fork lights the chosen branch.
-- *Unsure* = the sphere turns butter and a peach "person" sphere approaches it.
-
----
+- *A decision* = a grey sphere or a UI card. *Choices* = 3–5 option chips. *Jev picking* = all chips are evaluated **at once** (a single shimmer passes over all of them simultaneously), then one fills with ink and shows "97%" counting up.
+- *LLM* = words typing out one at a time in a field next to it, still going.
+- *Routing* = a signal dot rides a connector that forks; the chosen branch turns ink and the other stays mist.
+- *Unsure* = the chosen chip fills only mid-grey, and a Lucide `user` node slides in to "review".
 
 ## 10. Checklist
 - [ ] Every scene transition is a transformation (name the hand-off shape)
 - [ ] One hero per scene, centred, ≥40% empty field
 - [ ] Gradient + aura + grain on hero shapes; no flat clip-art
+- [ ] White stage, greyscale only, Lucide icons, no italic or coloured words
+- [ ] At least one interactive-looking moment per scene (cursor, toggle, highlight, signal, count-up)
 - [ ] Arrays staggered; overshoot only on small elements
 - [ ] Holds ≥3.5s with breathing motion; text readable on a phone (headline ≥84px)
 - [ ] House rules: no metadata, numbering, progress bars, dividers, slashes, decorative marks, or kicker above the headline
